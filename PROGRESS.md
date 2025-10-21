@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 3/21
-- **Current Focus:** JSON Responses
+- **Chapters Completed:** 4/21
+- **Current Focus:** Parsing JSON Requests
 - **Next Milestone:** Database Integration
 
 ---
@@ -24,14 +24,14 @@
 
 ### Part 2: Core API Development
 
-- ⬜ **Chapter 3:** Sending JSON Responses
+- ✅ **Chapter 3:** Sending JSON Responses
 
-  - ⬜ 3.1 Fixed-format JSON
-  - ⬜ 3.2 JSON encoding
-  - ⬜ 3.3 Encoding structs
-  - ⬜ 3.4 Formatting and enveloping responses
-  - ⬜ 3.5 Advanced JSON customization
-  - ⬜ 3.6 Sending error messages
+  - ✅ 3.1 Fixed-format JSON
+  - ✅ 3.2 JSON encoding
+  - ✅ 3.3 Encoding structs
+  - ✅ 3.4 Formatting and enveloping responses
+  - ✅ 3.5 Advanced JSON customization
+  - ✅ 3.6 Sending error messages
 
 - ⬜ **Chapter 4:** Parsing JSON Requests
 
@@ -181,10 +181,16 @@
 - ✅ Added RESTful routing foundation
 - ✅ Configured structured logging with slog
 - ✅ Set up command-line flags for configuration
+- ✅ Implemented JSON response encoding with envelope pattern
+- ✅ Created Movie model with custom JSON marshaling
+- ✅ Built comprehensive error handling system
+- ✅ Added panic recovery middleware
+- ✅ Implemented custom 404 and 405 handlers
 
 **Challenges:**
 
-- [ ] None yet
+- ✅ Initially had typo in `MarshalJSON` method name (wrote `MarshaJSON`)
+- ✅ Learned about new Go 1.24+ `omitzero` struct tag
 
 **Key Learnings:**
 
@@ -194,18 +200,25 @@
 - ✅ HTTP server configuration and timeouts
 - ✅ RESTful API design principles
 - ✅ Go project organization best practices
+- ✅ JSON encoding and custom marshaling with `MarshalJSON` interface
+- ✅ Envelope pattern for consistent API responses
+- ✅ Custom type marshaling (Runtime type to "102 mins" format)
+- ✅ Struct tags: `json:"-"`, `omitzero` for zero value omission
+- ✅ Error response patterns and centralized error handling
+- ✅ Middleware pattern for panic recovery
+- ✅ Custom router error handlers (NotFound, MethodNotAllowed)
 
 **Questions:**
 
-- [ ] None yet
+- ✅ Why wasn't custom JSON marshaling working? → Method name typo!
 
 ---
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 3 - Sending JSON Responses
-**Last completed:** Chapter 2.3 - API endpoints and RESTful routing
-**Next up:** Chapter 3.1 - Fixed-format JSON
+**Working on:** Chapter 4 - Parsing JSON Requests
+**Last completed:** Chapter 3.6 - Sending error messages
+**Next up:** Chapter 4.1 - JSON decoding
 
 ---
 
@@ -228,4 +241,4 @@
 
 ---
 
-_Last updated: October 16, 2025_
+_Last updated: October 20, 2025_
