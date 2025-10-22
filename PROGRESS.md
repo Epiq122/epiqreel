@@ -6,9 +6,9 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 4/21
-- **Current Focus:** Parsing JSON Requests
-- **Next Milestone:** Database Integration
+- **Chapters Completed:** 5/21
+- **Current Focus:** Database Setup and Configuration
+- **Next Milestone:** PostgreSQL Integration
 
 ---
 
@@ -33,13 +33,13 @@
   - ✅ 3.5 Advanced JSON customization
   - ✅ 3.6 Sending error messages
 
-- ⬜ **Chapter 4:** Parsing JSON Requests
+- ✅ **Chapter 4:** Parsing JSON Requests
 
-  - ⬜ 4.1 JSON decoding
-  - ⬜ 4.2 Managing bad requests
-  - ⬜ 4.3 Restricting inputs
-  - ⬜ 4.4 Custom JSON decoding
-  - ⬜ 4.5 Validating JSON input
+  - ✅ 4.1 JSON decoding
+  - ✅ 4.2 Managing bad requests
+  - ✅ 4.3 Restricting inputs
+  - ✅ 4.4 Custom JSON decoding
+  - ✅ 4.5 Validating JSON input
 
 - ⬜ **Chapter 5:** Database Setup and Configuration
 
@@ -186,11 +186,19 @@
 - ✅ Built comprehensive error handling system
 - ✅ Added panic recovery middleware
 - ✅ Implemented custom 404 and 405 handlers
+- ✅ Implemented JSON request parsing with readJSON helper
+- ✅ Created comprehensive validator package
+- ✅ Added movie validation with business rules
+- ✅ Implemented custom JSON unmarshaling for Runtime type
+- ✅ Built request size limiting and input restrictions
+- ✅ Created detailed error responses for all JSON parsing issues
 
 **Challenges:**
 
 - ✅ Initially had typo in `MarshalJSON` method name (wrote `MarshaJSON`)
 - ✅ Learned about new Go 1.24+ `omitzero` struct tag
+- ✅ Understanding the difference between `json.Decoder` and `json.Unmarshal`
+- ✅ Implementing comprehensive error handling for various JSON edge cases
 
 **Key Learnings:**
 
@@ -207,18 +215,30 @@
 - ✅ Error response patterns and centralized error handling
 - ✅ Middleware pattern for panic recovery
 - ✅ Custom router error handlers (NotFound, MethodNotAllowed)
+- ✅ JSON decoding with `json.Decoder` for streaming
+- ✅ Custom UnmarshalJSON implementation for type validation
+- ✅ Request body size limiting with `http.MaxBytesReader`
+- ✅ Disallowing unknown fields with `DisallowUnknownFields()`
+- ✅ Detecting multiple JSON values in request body
+- ✅ Type-safe error handling with `errors.As()` and `errors.Is()`
+- ✅ Validator pattern for reusable validation logic
+- ✅ Generic functions in Go (Unique, PermittedValue)
+- ✅ Regular expressions for email validation
+- ✅ Comprehensive business rule validation (year ranges, genre counts, etc.)
 
 **Questions:**
 
 - ✅ Why wasn't custom JSON marshaling working? → Method name typo!
+- ✅ How to handle malformed JSON gracefully? → Use type assertions with errors.As()
+- ✅ How to prevent clients from sending extra fields? → Use DisallowUnknownFields()
 
 ---
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 4 - Parsing JSON Requests
-**Last completed:** Chapter 3.6 - Sending error messages
-**Next up:** Chapter 4.1 - JSON decoding
+**Working on:** Chapter 5 - Database Setup and Configuration
+**Last completed:** Chapter 4.5 - Validating JSON input
+**Next up:** Chapter 5.1 - Setting up PostgreSQL
 
 ---
 
@@ -232,7 +252,7 @@
 
 ## 🏆 Milestones
 
-- [ ] **Milestone 1:** Foundation & JSON API (Chapters 1-4)
+- ✅ **Milestone 1:** Foundation & JSON API (Chapters 1-4)
 - [ ] **Milestone 2:** Database Integration & CRUD (Chapters 5-9)
 - [ ] **Milestone 3:** Advanced Features & Rate Limiting (Chapters 10-11)
 - [ ] **Milestone 4:** User Authentication System (Chapters 12-16)
@@ -241,4 +261,4 @@
 
 ---
 
-_Last updated: October 20, 2025_
+_Last updated: October 21, 2025_
