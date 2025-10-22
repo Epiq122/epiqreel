@@ -6,9 +6,9 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 5/21
-- **Current Focus:** Database Setup and Configuration
-- **Next Milestone:** PostgreSQL Integration
+- **Chapters Completed:** 6/21
+- **Current Focus:** SQL Migrations
+- **Next Milestone:** Complete Database Integration & CRUD
 
 ---
 
@@ -41,11 +41,11 @@
   - ✅ 4.4 Custom JSON decoding
   - ✅ 4.5 Validating JSON input
 
-- ⬜ **Chapter 5:** Database Setup and Configuration
+- ✅ **Chapter 5:** Database Setup and Configuration
 
-  - ⬜ 5.1 Setting up PostgreSQL
-  - ⬜ 5.2 Connecting to PostgreSQL
-  - ⬜ 5.3 Configuring the database connection pool
+  - ✅ 5.1 Setting up PostgreSQL
+  - ✅ 5.2 Connecting to PostgreSQL
+  - ✅ 5.3 Configuring the database connection pool
 
 - ⬜ **Chapter 6:** SQL Migrations
 
@@ -192,6 +192,10 @@
 - ✅ Implemented custom JSON unmarshaling for Runtime type
 - ✅ Built request size limiting and input restrictions
 - ✅ Created detailed error responses for all JSON parsing issues
+- ✅ Set up PostgreSQL database connection with lib/pq driver
+- ✅ Implemented connection pooling with configurable parameters
+- ✅ Added environment variable support for DSN configuration
+- ✅ Created openDB helper with timeout and ping verification
 
 **Challenges:**
 
@@ -199,6 +203,8 @@
 - ✅ Learned about new Go 1.24+ `omitzero` struct tag
 - ✅ Understanding the difference between `json.Decoder` and `json.Unmarshal`
 - ✅ Implementing comprehensive error handling for various JSON edge cases
+- ✅ DSN format confusion - needed `postgres://` scheme, not custom scheme
+- ✅ Understanding connection pool parameters and their impact
 
 **Key Learnings:**
 
@@ -225,20 +231,30 @@
 - ✅ Generic functions in Go (Unique, PermittedValue)
 - ✅ Regular expressions for email validation
 - ✅ Comprehensive business rule validation (year ranges, genre counts, etc.)
+- ✅ PostgreSQL driver import with blank identifier (\_ "github.com/lib/pq")
+- ✅ Database connection pooling concepts (max open, max idle, idle timeout)
+- ✅ Context-based timeouts with context.WithTimeout()
+- ✅ Database health checking with PingContext()
+- ✅ Deferred resource cleanup (defer db.Close())
+- ✅ Environment variable configuration with os.Getenv()
+- ✅ DSN format: postgres://username:password@host/database
+- ✅ Connection pool tuning for production workloads
 
 **Questions:**
 
 - ✅ Why wasn't custom JSON marshaling working? → Method name typo!
 - ✅ How to handle malformed JSON gracefully? → Use type assertions with errors.As()
 - ✅ How to prevent clients from sending extra fields? → Use DisallowUnknownFields()
+- ✅ What's the correct PostgreSQL DSN format? → postgres://user:pass@host/db
+- ✅ How to configure connection pooling? → SetMaxOpenConns, SetMaxIdleConns, SetConnMaxIdleTime
 
 ---
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 5 - Database Setup and Configuration
-**Last completed:** Chapter 4.5 - Validating JSON input
-**Next up:** Chapter 5.1 - Setting up PostgreSQL
+**Working on:** Chapter 6 - SQL Migrations
+**Last completed:** Chapter 5.3 - Configuring the database connection pool
+**Next up:** Chapter 6.1 - An overview of SQL migrations
 
 ---
 
