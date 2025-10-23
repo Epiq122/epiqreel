@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 6/21
-- **Current Focus:** SQL Migrations
+- **Chapters Completed:** 7/21
+- **Current Focus:** CRUD Operations
 - **Next Milestone:** Complete Database Integration & CRUD
 
 ---
@@ -47,10 +47,10 @@
   - ✅ 5.2 Connecting to PostgreSQL
   - ✅ 5.3 Configuring the database connection pool
 
-- ⬜ **Chapter 6:** SQL Migrations
+- ✅ **Chapter 6:** SQL Migrations
 
-  - ⬜ 6.1 An overview of SQL migrations
-  - ⬜ 6.2 Working with SQL migrations
+  - ✅ 6.1 An overview of SQL migrations
+  - ✅ 6.2 Working with SQL migrations
 
 - ⬜ **Chapter 7:** CRUD Operations
 
@@ -196,6 +196,10 @@
 - ✅ Implemented connection pooling with configurable parameters
 - ✅ Added environment variable support for DSN configuration
 - ✅ Created openDB helper with timeout and ping verification
+- ✅ Installed and configured golang-migrate CLI tool
+- ✅ Created initial migration for movies table
+- ✅ Added check constraints migration for data validation
+- ✅ Resolved PostgreSQL schema permissions for user
 
 **Challenges:**
 
@@ -205,6 +209,7 @@
 - ✅ Implementing comprehensive error handling for various JSON edge cases
 - ✅ DSN format confusion - needed `postgres://` scheme, not custom scheme
 - ✅ Understanding connection pool parameters and their impact
+- ✅ PostgreSQL permission denied for schema public - needed to grant privileges
 
 **Key Learnings:**
 
@@ -239,6 +244,13 @@
 - ✅ Environment variable configuration with os.Getenv()
 - ✅ DSN format: postgres://username:password@host/database
 - ✅ Connection pool tuning for production workloads
+- ✅ SQL migrations concept - versioned, repeatable database changes
+- ✅ Migration naming: timestamp_description.up.sql and .down.sql
+- ✅ Check constraints for data integrity at database level
+- ✅ PostgreSQL array_length() function for validating array sizes
+- ✅ date_part() function for extracting year from timestamps
+- ✅ Schema permissions: GRANT ALL ON SCHEMA public TO user
+- ✅ Tracking migrations with schema_migrations table
 
 **Questions:**
 
@@ -247,14 +259,15 @@
 - ✅ How to prevent clients from sending extra fields? → Use DisallowUnknownFields()
 - ✅ What's the correct PostgreSQL DSN format? → postgres://user:pass@host/db
 - ✅ How to configure connection pooling? → SetMaxOpenConns, SetMaxIdleConns, SetConnMaxIdleTime
+- ✅ Permission denied for schema public? → GRANT ALL ON SCHEMA public TO user
 
 ---
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 6 - SQL Migrations
-**Last completed:** Chapter 5.3 - Configuring the database connection pool
-**Next up:** Chapter 6.1 - An overview of SQL migrations
+**Working on:** Chapter 7 - CRUD Operations
+**Last completed:** Chapter 6.2 - Working with SQL migrations
+**Next up:** Chapter 7.1 - Setting up the movie model
 
 ---
 
@@ -277,4 +290,4 @@
 
 ---
 
-_Last updated: October 21, 2025_
+_Last updated: October 22, 2025_
