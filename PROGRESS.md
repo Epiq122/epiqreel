@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 7/21
-- **Current Focus:** CRUD Operations
+- **Chapters Completed:** 8/21
+- **Current Focus:** Advanced CRUD Operations
 - **Next Milestone:** Complete Database Integration & CRUD
 
 ---
@@ -52,13 +52,13 @@
   - ✅ 6.1 An overview of SQL migrations
   - ✅ 6.2 Working with SQL migrations
 
-- ⬜ **Chapter 7:** CRUD Operations
+- ✅ **Chapter 7:** CRUD Operations
 
-  - ⬜ 7.1 Setting up the movie model
-  - ⬜ 7.2 Creating a new movie
-  - ⬜ 7.3 Fetching a movie
-  - ⬜ 7.4 Updating a movie
-  - ⬜ 7.5 Deleting a movie
+  - ✅ 7.1 Setting up the movie model
+  - ✅ 7.2 Creating a new movie
+  - ✅ 7.3 Fetching a movie
+  - ✅ 7.4 Updating a movie
+  - ✅ 7.5 Deleting a movie
 
 - ⬜ **Chapter 8:** Advanced CRUD Operations
 
@@ -200,6 +200,14 @@
 - ✅ Created initial migration for movies table
 - ✅ Added check constraints migration for data validation
 - ✅ Resolved PostgreSQL schema permissions for user
+- ✅ Created MovieModel struct with all CRUD operations
+- ✅ Implemented Insert method with RETURNING clause
+- ✅ Implemented Get method with error handling for missing records
+- ✅ Implemented Update method with version incrementing
+- ✅ Implemented Delete method with RowsAffected check
+- ✅ Created Models wrapper struct for dependency injection
+- ✅ Integrated database models into application handlers
+- ✅ Added Location header for created resources
 
 **Challenges:**
 
@@ -210,6 +218,8 @@
 - ✅ DSN format confusion - needed `postgres://` scheme, not custom scheme
 - ✅ Understanding connection pool parameters and their impact
 - ✅ PostgreSQL permission denied for schema public - needed to grant privileges
+- ✅ SQL placeholder typo - used `1$` instead of `$1` causing Update to fail
+- ✅ Understanding RETURNING clause for getting auto-generated values
 
 **Key Learnings:**
 
@@ -251,6 +261,18 @@
 - ✅ date_part() function for extracting year from timestamps
 - ✅ Schema permissions: GRANT ALL ON SCHEMA public TO user
 - ✅ Tracking migrations with schema_migrations table
+- ✅ Repository pattern with model structs for database operations
+- ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
+- ✅ QueryRow() vs Exec() - when to use each for different operations
+- ✅ Scan() method for mapping database rows to Go structs
+- ✅ pq.Array() for PostgreSQL array handling in both directions
+- ✅ sql.ErrNoRows for detecting missing records
+- ✅ ErrRecordNotFound custom error for application-level handling
+- ✅ RowsAffected() to verify DELETE operations succeeded
+- ✅ Version incrementing with `version = version + 1` in UPDATE
+- ✅ Location header (RFC 7231) for newly created resources
+- ✅ Models struct wrapper for dependency injection pattern
+- ✅ Pointer receivers for database models to avoid copying
 
 **Questions:**
 
@@ -260,14 +282,16 @@
 - ✅ What's the correct PostgreSQL DSN format? → postgres://user:pass@host/db
 - ✅ How to configure connection pooling? → SetMaxOpenConns, SetMaxIdleConns, SetConnMaxIdleTime
 - ✅ Permission denied for schema public? → GRANT ALL ON SCHEMA public TO user
+- ✅ Why isn't version incrementing on update? → SQL placeholder typo ($1 not 1$)
+- ✅ How to get auto-generated values after INSERT? → Use RETURNING clause
 
 ---
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 7 - CRUD Operations
-**Last completed:** Chapter 6.2 - Working with SQL migrations
-**Next up:** Chapter 7.1 - Setting up the movie model
+**Working on:** Chapter 8 - Advanced CRUD Operations
+**Last completed:** Chapter 7.5 - Deleting a movie
+**Next up:** Chapter 8.1 - Handling partial updates
 
 ---
 
