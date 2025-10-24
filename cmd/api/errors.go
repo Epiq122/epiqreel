@@ -22,6 +22,7 @@ func (app *application) errorResponse(w http.ResponseWriter, r *http.Request, st
 	if err != nil {
 		app.logError(r, err)
 		w.WriteHeader(500)
+
 	}
 
 }
@@ -50,4 +51,5 @@ func (app *application) badRequestResponse(w http.ResponseWriter, r *http.Reques
 
 func (app *application) failedValidationResponse(w http.ResponseWriter, r *http.Request, errors map[string]string) {
 	app.errorResponse(w, r, http.StatusUnprocessableEntity, errors)
+
 }
