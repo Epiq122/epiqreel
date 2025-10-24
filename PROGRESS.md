@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 8/21
-- **Current Focus:** Advanced CRUD Operations
+- **Chapters Completed:** 9/21
+- **Current Focus:** Filtering, Sorting, and Pagination
 - **Next Milestone:** Complete Database Integration & CRUD
 
 ---
@@ -60,11 +60,11 @@
   - ✅ 7.4 Updating a movie
   - ✅ 7.5 Deleting a movie
 
-- ⬜ **Chapter 8:** Advanced CRUD Operations
+- ✅ **Chapter 8:** Advanced CRUD Operations
 
-  - ⬜ 8.1 Handling partial updates
-  - ⬜ 8.2 Optimistic concurrency control
-  - ⬜ 8.3 Managing SQL query timeouts
+  - ✅ 8.1 Handling partial updates
+  - ✅ 8.2 Optimistic concurrency control
+  - ✅ 8.3 Managing SQL query timeouts
 
 - ⬜ **Chapter 9:** Filtering, Sorting, and Pagination
   - ⬜ 9.1 Parsing query string parameters
@@ -208,6 +208,11 @@
 - ✅ Created Models wrapper struct for dependency injection
 - ✅ Integrated database models into application handlers
 - ✅ Added Location header for created resources
+- ✅ Implemented partial update support with pointer fields
+- ✅ Added optimistic concurrency control with version checking
+- ✅ Implemented ErrEditConflict for race condition detection
+- ✅ Added context timeouts to all database operations (3 seconds)
+- ✅ Created editConflictResponse for 409 Conflict errors
 
 **Challenges:**
 
@@ -220,6 +225,8 @@
 - ✅ PostgreSQL permission denied for schema public - needed to grant privileges
 - ✅ SQL placeholder typo - used `1$` instead of `$1` causing Update to fail
 - ✅ Understanding RETURNING clause for getting auto-generated values
+- ✅ Understanding when nil pointers indicate "no update" vs actual nil values
+- ✅ Testing concurrent updates to verify optimistic locking works correctly
 
 **Key Learnings:**
 
@@ -273,6 +280,18 @@
 - ✅ Location header (RFC 7231) for newly created resources
 - ✅ Models struct wrapper for dependency injection pattern
 - ✅ Pointer receivers for database models to avoid copying
+- ✅ Partial updates using pointer fields (*string, *int32, \*Runtime)
+- ✅ Nil pointer check pattern for detecting which fields to update
+- ✅ Optimistic concurrency control (OCC) for preventing lost updates
+- ✅ Version field as optimistic lock for concurrent modifications
+- ✅ WHERE clause with version check: AND version = $6
+- ✅ ErrEditConflict for detecting race conditions
+- ✅ HTTP 409 Conflict for edit conflict scenarios
+- ✅ Context timeouts with context.WithTimeout()
+- ✅ QueryRowContext() and ExecContext() for timeout-aware queries
+- ✅ defer cancel() pattern for context cleanup
+- ✅ 3-second timeout for database operations
+- ✅ Race condition testing with concurrent requests (xargs -P8)
 
 **Questions:**
 
@@ -284,14 +303,17 @@
 - ✅ Permission denied for schema public? → GRANT ALL ON SCHEMA public TO user
 - ✅ Why isn't version incrementing on update? → SQL placeholder typo ($1 not 1$)
 - ✅ How to get auto-generated values after INSERT? → Use RETURNING clause
+- ✅ How to handle partial updates? → Use pointer fields, only update non-nil values
+- ✅ How to prevent lost updates in concurrent scenarios? → Optimistic locking with version
+- ✅ Why are concurrent updates getting edit conflicts? → That's correct! OCC working as designed
 
 ---
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 8 - Advanced CRUD Operations
-**Last completed:** Chapter 7.5 - Deleting a movie
-**Next up:** Chapter 8.1 - Handling partial updates
+**Working on:** Chapter 9 - Filtering, Sorting, and Pagination
+**Last completed:** Chapter 8.3 - Managing SQL query timeouts
+**Next up:** Chapter 9.1 - Parsing query string parameters
 
 ---
 
@@ -314,4 +336,4 @@
 
 ---
 
-_Last updated: October 22, 2025_
+_Last updated: October 23, 2025_
