@@ -7,8 +7,8 @@
 ## 📊 Overall Progress
 
 - **Chapters Completed:** 9/21
-- **Current Focus:** Filtering, Sorting, and Pagination
-- **Next Milestone:** Complete Database Integration & CRUD
+- **Current Focus:** Rate Limiting
+- **Next Milestone:** Complete Advanced Features
 
 ---
 
@@ -66,15 +66,15 @@
   - ✅ 8.2 Optimistic concurrency control
   - ✅ 8.3 Managing SQL query timeouts
 
-- ⬜ **Chapter 9:** Filtering, Sorting, and Pagination
-  - ⬜ 9.1 Parsing query string parameters
-  - ⬜ 9.2 Validating query string parameters
-  - ⬜ 9.3 Listing data
-  - ⬜ 9.4 Filtering lists
-  - ⬜ 9.5 Full-text search
-  - ⬜ 9.6 Sorting lists
-  - ⬜ 9.7 Paginating lists
-  - ⬜ 9.8 Returning pagination metadata
+- ✅ **Chapter 9:** Filtering, Sorting, and Pagination
+  - ✅ 9.1 Parsing query string parameters
+  - ✅ 9.2 Validating query string parameters
+  - ✅ 9.3 Listing data
+  - ✅ 9.4 Filtering lists
+  - ✅ 9.5 Full-text search
+  - ✅ 9.6 Sorting lists
+  - ✅ 9.7 Paginating lists
+  - ✅ 9.8 Returning pagination metadata
 
 ### Part 3: Advanced Features
 
@@ -213,6 +213,16 @@
 - ✅ Implemented ErrEditConflict for race condition detection
 - ✅ Added context timeouts to all database operations (3 seconds)
 - ✅ Created editConflictResponse for 409 Conflict errors
+- ✅ Implemented query string parameter parsing helpers (readString, readCSV, readInt)
+- ✅ Created Filters struct for pagination and sorting
+- ✅ Added GIN indexes on genres array and title tsvector for performance
+- ✅ Implemented GetAll method with full-text search using to_tsvector
+- ✅ Added genre filtering with PostgreSQL array containment operator (@>)
+- ✅ Implemented dynamic sorting with sort safelist validation
+- ✅ Added pagination with LIMIT and OFFSET
+- ✅ Implemented count(\*) OVER() window function for total records
+- ✅ Created calculateMetadata helper for pagination metadata
+- ✅ Integrated filtering, sorting, and pagination into listMoviesHandler
 
 **Challenges:**
 
@@ -227,6 +237,11 @@
 - ✅ Understanding RETURNING clause for getting auto-generated values
 - ✅ Understanding when nil pointers indicate "no update" vs actual nil values
 - ✅ Testing concurrent updates to verify optimistic locking works correctly
+- ✅ Understanding CSV parsing for multi-value query parameters
+- ✅ Building dynamic SQL safely with safelists to prevent injection
+- ✅ PostgreSQL full-text search concepts (tsvector, tsquery)
+- ✅ Window functions (count(\*) OVER()) for efficient total counting
+- ✅ GIN index usage for arrays and full-text search performance
 
 **Key Learnings:**
 
@@ -268,6 +283,37 @@
 - ✅ date_part() function for extracting year from timestamps
 - ✅ Schema permissions: GRANT ALL ON SCHEMA public TO user
 - ✅ Tracking migrations with schema_migrations table
+- ✅ RETURNING clause to get auto-generated values (INSERT RETURNING)
+- ✅ Repository pattern for database operations
+- ✅ Dependency injection with Models struct
+- ✅ Error handling with errors.Is() for type checking
+- ✅ Location header for created resources (RFC 7231)
+- ✅ SQL placeholders for preventing SQL injection
+- ✅ Scanning query results into struct fields
+- ✅ RowsAffected for verifying DELETE/UPDATE operations
+- ✅ Partial updates using pointer fields to detect "not provided"
+- ✅ Optimistic concurrency control (OCC) with version field
+- ✅ Version incrementing with SET version = version + 1
+- ✅ WHERE clause conditions for preventing lost updates
+- ✅ ErrEditConflict custom error for race conditions
+- ✅ 409 Conflict status code for concurrent update failures
+- ✅ Query string parameter parsing with url.Values
+- ✅ Helper functions: readString, readCSV, readInt
+- ✅ Default values for optional query parameters
+- ✅ CSV parsing for multi-value parameters (genres=action,comedy)
+- ✅ Integer validation with strconv.Atoi
+- ✅ Filters struct for pagination and sorting logic
+- ✅ Embedding Filters in input structs
+- ✅ Sort safelist for preventing SQL injection in ORDER BY
+- ✅ Dynamic SQL query building with fmt.Sprintf
+- ✅ Full-text search with PostgreSQL to_tsvector and plainto_tsquery
+- ✅ Array containment with @> operator for genre filtering
+- ✅ LIMIT and OFFSET for pagination
+- ✅ count(\*) OVER() window function for total record count
+- ✅ Calculating pagination metadata (current page, total pages, etc.)
+- ✅ GIN indexes on arrays for performance (genres)
+- ✅ GIN indexes on tsvector for full-text search performance
+- ✅ Metadata struct with first_page, last_page, current_page, page_size, total_records
 - ✅ Repository pattern with model structs for database operations
 - ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
 - ✅ QueryRow() vs Exec() - when to use each for different operations
@@ -311,9 +357,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 9 - Filtering, Sorting, and Pagination
-**Last completed:** Chapter 8.3 - Managing SQL query timeouts
-**Next up:** Chapter 9.1 - Parsing query string parameters
+**Working on:** Chapter 10 - Rate Limiting
+**Last completed:** Chapter 9.8 - Returning pagination metadata
+**Next up:** Chapter 10.1 - Global rate limiting
 
 ---
 
@@ -328,7 +374,7 @@
 ## 🏆 Milestones
 
 - ✅ **Milestone 1:** Foundation & JSON API (Chapters 1-4)
-- [ ] **Milestone 2:** Database Integration & CRUD (Chapters 5-9)
+- ✅ **Milestone 2:** Database Integration & CRUD (Chapters 5-9)
 - [ ] **Milestone 3:** Advanced Features & Rate Limiting (Chapters 10-11)
 - [ ] **Milestone 4:** User Authentication System (Chapters 12-16)
 - [ ] **Milestone 5:** CORS & Metrics (Chapters 17-18)
@@ -336,4 +382,4 @@
 
 ---
 
-_Last updated: October 23, 2025_
+_Last updated: October 26, 2025_
