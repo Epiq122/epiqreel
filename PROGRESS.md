@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 9/21
-- **Current Focus:** Rate Limiting
+- **Chapters Completed:** 10/21
+- **Current Focus:** Graceful Shutdown
 - **Next Milestone:** Complete Advanced Features
 
 ---
@@ -78,11 +78,11 @@
 
 ### Part 3: Advanced Features
 
-- ⬜ **Chapter 10:** Rate Limiting
+- ✅ **Chapter 10:** Rate Limiting
 
-  - ⬜ 10.1 Global rate limiting
-  - ⬜ 10.2 IP-based rate limiting
-  - ⬜ 10.3 Configuring the rate limiters
+  - ✅ 10.1 Global rate limiting
+  - ✅ 10.2 IP-based rate limiting
+  - ✅ 10.3 Configuring the rate limiters
 
 - ⬜ **Chapter 11:** Graceful Shutdown
 
@@ -223,6 +223,14 @@
 - ✅ Implemented count(\*) OVER() window function for total records
 - ✅ Created calculateMetadata helper for pagination metadata
 - ✅ Integrated filtering, sorting, and pagination into listMoviesHandler
+- ✅ Installed golang.org/x/time/rate for token bucket rate limiting
+- ✅ Installed github.com/tomasen/realip for client IP extraction
+- ✅ Implemented rateLimit middleware with IP-based rate limiting
+- ✅ Created map[string]*client to track limiters per IP address
+- ✅ Added background goroutine to clean up stale clients every minute
+- ✅ Added limiter configuration flags (rps, burst, enabled)
+- ✅ Integrated rate limiting middleware into routes chain
+- ✅ Created rateLimitExceededResponse for 429 status code
 
 **Challenges:**
 
@@ -242,6 +250,9 @@
 - ✅ PostgreSQL full-text search concepts (tsvector, tsquery)
 - ✅ Window functions (count(\*) OVER()) for efficient total counting
 - ✅ GIN index usage for arrays and full-text search performance
+- ✅ Flag redefinition errors - flag names must be unique
+- ✅ Understanding rate limiting with token bucket algorithm
+- ✅ Cleaning up old map entries to prevent memory leaks
 
 **Key Learnings:**
 
@@ -314,6 +325,16 @@
 - ✅ GIN indexes on arrays for performance (genres)
 - ✅ GIN indexes on tsvector for full-text search performance
 - ✅ Metadata struct with first_page, last_page, current_page, page_size, total_records
+- ✅ Token bucket algorithm for rate limiting (golang.org/x/time/rate)
+- ✅ rate.Limiter with configurable requests per second and burst
+- ✅ IP-based rate limiting using map[string]*client
+- ✅ Extracting client IP with realip.FromRequest (handles X-Forwarded-For, X-Real-IP)
+- ✅ Mutex (sync.Mutex) for protecting shared map access
+- ✅ Background goroutine for periodic cleanup of stale entries
+- ✅ time.Since() for tracking client last seen time
+- ✅ Conditional middleware with config.limiter.enabled flag
+- ✅ 429 Too Many Requests status code for rate limit violations
+- ✅ Middleware chaining pattern (recoverPanic -> rateLimit -> router)
 - ✅ Repository pattern with model structs for database operations
 - ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
 - ✅ QueryRow() vs Exec() - when to use each for different operations
@@ -357,9 +378,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 10 - Rate Limiting
-**Last completed:** Chapter 9.8 - Returning pagination metadata
-**Next up:** Chapter 10.1 - Global rate limiting
+**Working on:** Chapter 11 - Graceful Shutdown
+**Last completed:** Chapter 10.3 - Configuring the rate limiters
+**Next up:** Chapter 11.1 - Sending shutdown signals
 
 ---
 
