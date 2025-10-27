@@ -226,7 +226,7 @@
 - ✅ Installed golang.org/x/time/rate for token bucket rate limiting
 - ✅ Installed github.com/tomasen/realip for client IP extraction
 - ✅ Implemented rateLimit middleware with IP-based rate limiting
-- ✅ Created map[string]*client to track limiters per IP address
+- ✅ Created map[string]\*client to track limiters per IP address
 - ✅ Added background goroutine to clean up stale clients every minute
 - ✅ Added limiter configuration flags (rps, burst, enabled)
 - ✅ Integrated rate limiting middleware into routes chain
@@ -327,7 +327,7 @@
 - ✅ Metadata struct with first_page, last_page, current_page, page_size, total_records
 - ✅ Token bucket algorithm for rate limiting (golang.org/x/time/rate)
 - ✅ rate.Limiter with configurable requests per second and burst
-- ✅ IP-based rate limiting using map[string]*client
+- ✅ IP-based rate limiting using map[string]\*client
 - ✅ Extracting client IP with realip.FromRequest (handles X-Forwarded-For, X-Real-IP)
 - ✅ Mutex (sync.Mutex) for protecting shared map access
 - ✅ Background goroutine for periodic cleanup of stale entries
