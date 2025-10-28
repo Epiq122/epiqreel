@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 10/21
-- **Current Focus:** Graceful Shutdown
+- **Chapters Completed:** 11/21
+- **Current Focus:** User Model Setup and Registration
 - **Next Milestone:** Complete Advanced Features
 
 ---
@@ -84,11 +84,11 @@
   - ✅ 10.2 IP-based rate limiting
   - ✅ 10.3 Configuring the rate limiters
 
-- ⬜ **Chapter 11:** Graceful Shutdown
+- ✅ **Chapter 11:** Graceful Shutdown
 
-  - ⬜ 11.1 Sending shutdown signals
-  - ⬜ 11.2 Intercepting shutdown signals
-  - ⬜ 11.3 Executing the shutdown
+  - ✅ 11.1 Sending shutdown signals
+  - ✅ 11.2 Intercepting shutdown signals
+  - ✅ 11.3 Executing the shutdown
 
 - ⬜ **Chapter 12:** User Model Setup and Registration
 
@@ -231,6 +231,12 @@
 - ✅ Added limiter configuration flags (rps, burst, enabled)
 - ✅ Integrated rate limiting middleware into routes chain
 - ✅ Created rateLimitExceededResponse for 429 status code
+- ✅ Extracted server setup into serve() method
+- ✅ Created shutdownError channel for graceful shutdown coordination
+- ✅ Implemented signal handler goroutine for SIGINT and SIGTERM
+- ✅ Added 30-second timeout for graceful shutdown with context.WithTimeout
+- ✅ Called srv.Shutdown(ctx) to gracefully stop accepting new requests
+- ✅ Used errors.Is() to distinguish between normal and abnormal shutdown
 
 **Challenges:**
 
@@ -253,6 +259,9 @@
 - ✅ Flag redefinition errors - flag names must be unique
 - ✅ Understanding rate limiting with token bucket algorithm
 - ✅ Cleaning up old map entries to prevent memory leaks
+- ✅ Understanding graceful shutdown vs abrupt termination
+- ✅ Coordinating goroutines with channels for shutdown signaling
+- ✅ Using http.ErrServerClosed to detect normal shutdown
 
 **Key Learnings:**
 
@@ -335,6 +344,14 @@
 - ✅ Conditional middleware with config.limiter.enabled flag
 - ✅ 429 Too Many Requests status code for rate limit violations
 - ✅ Middleware chaining pattern (recoverPanic -> rateLimit -> router)
+- ✅ Graceful shutdown with srv.Shutdown() and context timeout
+- ✅ Signal handling with os/signal package (SIGINT, SIGTERM)
+- ✅ Channel-based communication between goroutines (shutdownError chan)
+- ✅ Buffered channels (make(chan os.Signal, 1)) for signal handling
+- ✅ signal.Notify() for registering signal handlers
+- ✅ Distinguishing http.ErrServerClosed from actual errors
+- ✅ Context with deadline for shutdown timeout (30 seconds)
+- ✅ Extracting server logic into serve() method for better organization
 - ✅ Repository pattern with model structs for database operations
 - ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
 - ✅ QueryRow() vs Exec() - when to use each for different operations
@@ -378,9 +395,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 11 - Graceful Shutdown
-**Last completed:** Chapter 10.3 - Configuring the rate limiters
-**Next up:** Chapter 11.1 - Sending shutdown signals
+**Working on:** Chapter 12 - User Model Setup and Registration
+**Last completed:** Chapter 11.3 - Executing the shutdown
+**Next up:** Chapter 12.1 - Setting up the users database table
 
 ---
 
@@ -396,11 +413,11 @@
 
 - ✅ **Milestone 1:** Foundation & JSON API (Chapters 1-4)
 - ✅ **Milestone 2:** Database Integration & CRUD (Chapters 5-9)
-- [ ] **Milestone 3:** Advanced Features & Rate Limiting (Chapters 10-11)
+- ✅ **Milestone 3:** Advanced Features & Rate Limiting (Chapters 10-11)
 - [ ] **Milestone 4:** User Authentication System (Chapters 12-16)
 - [ ] **Milestone 5:** CORS & Metrics (Chapters 17-18)
 - [ ] **Milestone 6:** Production Deployment (Chapters 19-21)
 
 ---
 
-_Last updated: October 26, 2025_
+_Last updated: October 27, 2025_
