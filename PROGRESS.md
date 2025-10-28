@@ -6,9 +6,9 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 11/21
-- **Current Focus:** User Model Setup and Registration
-- **Next Milestone:** Complete Advanced Features
+- **Chapters Completed:** 12/21
+- **Current Focus:** Sending Emails
+- **Next Milestone:** Complete User Authentication System
 
 ---
 
@@ -90,11 +90,11 @@
   - ✅ 11.2 Intercepting shutdown signals
   - ✅ 11.3 Executing the shutdown
 
-- ⬜ **Chapter 12:** User Model Setup and Registration
+- ✅ **Chapter 12:** User Model Setup and Registration
 
-  - ⬜ 12.1 Setting up the users database table
-  - ⬜ 12.2 Setting up the users model
-  - ⬜ 12.3 Registering a user
+  - ✅ 12.1 Setting up the users database table
+  - ✅ 12.2 Setting up the users model
+  - ✅ 12.3 Registering a user
 
 - ⬜ **Chapter 13:** Sending Emails
 
@@ -237,6 +237,13 @@
 - ✅ Added 30-second timeout for graceful shutdown with context.WithTimeout
 - ✅ Called srv.Shutdown(ctx) to gracefully stop accepting new requests
 - ✅ Used errors.Is() to distinguish between normal and abnormal shutdown
+- ✅ Created users database table with citext extension for case-insensitive emails
+- ✅ Implemented User model with password struct and bcrypt hashing
+- ✅ Built registerUserHandler for POST /v1/users endpoint
+- ✅ Added password validation (8-72 characters) and email format validation
+- ✅ Implemented Insert, GetByEmail, and Update methods on UserModel
+- ✅ Added ErrDuplicateEmail for handling unique constraint violations
+- ✅ Integrated Users into Models struct
 
 **Challenges:**
 
@@ -262,6 +269,10 @@
 - ✅ Understanding graceful shutdown vs abrupt termination
 - ✅ Coordinating goroutines with channels for shutdown signaling
 - ✅ Using http.ErrServerClosed to detect normal shutdown
+- ✅ citext extension not being enabled - needed CREATE EXTENSION in migration
+- ✅ Understanding bcrypt cost factor selection (12 for strong security)
+- ✅ Handling duplicate email errors from unique constraint violations
+- ✅ Password field exclusion from JSON with json:"-" tag
 
 **Key Learnings:**
 
@@ -352,6 +363,22 @@
 - ✅ Distinguishing http.ErrServerClosed from actual errors
 - ✅ Context with deadline for shutdown timeout (30 seconds)
 - ✅ Extracting server logic into serve() method for better organization
+- ✅ PostgreSQL citext extension for case-insensitive text type
+- ✅ CREATE EXTENSION IF NOT EXISTS for enabling PostgreSQL extensions
+- ✅ bytea type for storing binary data (password hashes)
+- ✅ bcrypt.GenerateFromPassword() with cost factor 12
+- ✅ bcrypt.CompareHashAndPassword() for constant-time password verification
+- ✅ Password struct with plaintext and hash fields
+- ✅ Set() method for hashing passwords before storage
+- ✅ Matches() method for verifying passwords against stored hash
+- ✅ json:"-" struct tag to exclude sensitive fields from JSON
+- ✅ Email validation with regex pattern (EmailRX)
+- ✅ Password length constraints (8-72 bytes for bcrypt)
+- ✅ UNIQUE constraint on email column with citext for case-insensitive uniqueness
+- ✅ Detecting duplicate key violations with pq error checking
+- ✅ ErrDuplicateEmail custom error for application-level handling
+- ✅ GetByEmail() method for user lookup by email address
+- ✅ Update() method with version checking for users
 - ✅ Repository pattern with model structs for database operations
 - ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
 - ✅ QueryRow() vs Exec() - when to use each for different operations
@@ -395,9 +422,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 12 - User Model Setup and Registration
-**Last completed:** Chapter 11.3 - Executing the shutdown
-**Next up:** Chapter 12.1 - Setting up the users database table
+**Working on:** Chapter 13 - Sending Emails
+**Last completed:** Chapter 12.3 - Registering a user
+**Next up:** Chapter 13.1 - SMTP server setup
 
 ---
 
