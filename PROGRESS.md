@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 12/21
-- **Current Focus:** Sending Emails
+- **Chapters Completed:** 13/21
+- **Current Focus:** User Activation
 - **Next Milestone:** Complete User Authentication System
 
 ---
@@ -96,13 +96,13 @@
   - ✅ 12.2 Setting up the users model
   - ✅ 12.3 Registering a user
 
-- ⬜ **Chapter 13:** Sending Emails
+- ✅ **Chapter 13:** Sending Emails
 
-  - ⬜ 13.1 SMTP server setup
-  - ⬜ 13.2 Creating email templates
-  - ⬜ 13.3 Sending a welcome email
-  - ⬜ 13.4 Sending background emails
-  - ⬜ 13.5 Graceful shutdown of background tasks
+  - ✅ 13.1 SMTP server setup
+  - ✅ 13.2 Creating email templates
+  - ✅ 13.3 Sending a welcome email
+  - ✅ 13.4 Sending background emails
+  - ✅ 13.5 Graceful shutdown of background tasks
 
 - ⬜ **Chapter 14:** User Activation
 
@@ -273,6 +273,12 @@
 - ✅ Understanding bcrypt cost factor selection (12 for strong security)
 - ✅ Handling duplicate email errors from unique constraint violations
 - ✅ Password field exclusion from JSON with json:"-" tag
+- ✅ Missing //go:embed directive causing template parsing failures
+- ✅ Email sender format requires space: "Name <email@domain.com>"
+- ✅ Mailtrap SMTP port 2525 vs default port 25
+- ✅ Fixing duplicate email constraint error string (missing closing quote)
+- ✅ Understanding background goroutines for non-blocking operations
+- ✅ sync.WaitGroup for tracking background task completion during shutdown
 
 **Key Learnings:**
 
@@ -379,6 +385,27 @@
 - ✅ ErrDuplicateEmail custom error for application-level handling
 - ✅ GetByEmail() method for user lookup by email address
 - ✅ Update() method with version checking for users
+- ✅ //go:embed directive for embedding template files in binary
+- ✅ embed.FS for embedded file system access
+- ✅ text/template and html/template for dual-format emails
+- ✅ Parsing templates from embedded FS with ParseFS()
+- ✅ ExecuteTemplate() with named templates (subject, plainBody, htmlBody)
+- ✅ bytes.Buffer for building email content
+- ✅ mail.NewMsg() for creating email messages
+- ✅ mail.TypeTextPlain and mail.TypeTextHTML for content types
+- ✅ AddAlternativeString() for multi-part emails (plain + HTML)
+- ✅ DialAndSend() for connecting to SMTP and sending email
+- ✅ SMTP configuration flags (host, port, username, password, sender)
+- ✅ Mailtrap for testing email delivery in development
+- ✅ SMTP port 2525 for Mailtrap (not 25)
+- ✅ Email sender format: "Name <email@example.com>" with space
+- ✅ Background goroutines with app.background() helper
+- ✅ sync.WaitGroup for tracking background tasks
+- ✅ defer recover() in background tasks to prevent panics crashing server
+- ✅ Logging errors from background tasks instead of returning them
+- ✅ 202 Accepted status code for asynchronous operations
+- ✅ Waiting for background tasks during graceful shutdown
+- ✅ app.wg.Wait() before completing shutdown
 - ✅ Repository pattern with model structs for database operations
 - ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
 - ✅ QueryRow() vs Exec() - when to use each for different operations
@@ -422,9 +449,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 13 - Sending Emails
-**Last completed:** Chapter 12.3 - Registering a user
-**Next up:** Chapter 13.1 - SMTP server setup
+**Working on:** Chapter 14 - User Activation
+**Last completed:** Chapter 13.5 - Graceful shutdown of background tasks
+**Next up:** Chapter 14.1 - Setting up the tokens database table
 
 ---
 
