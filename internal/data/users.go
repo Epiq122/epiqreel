@@ -14,6 +14,7 @@ import (
 var (
 	ErrDuplicateEmail = errors.New("duplicate email")
 )
+var AnonymousUser = &User{}
 
 type User struct {
 	ID        int64     `json:"id"`
@@ -28,6 +29,10 @@ type User struct {
 type password struct {
 	plaintext *string
 	hash      []byte
+}
+
+func (u *User) IsAnonymous() bool {
+	return u == AnonymousUser
 }
 
 func (p *password) Set(plaintextPassword string) error {
@@ -215,5 +220,5 @@ func (m UserModel) GetForToken(tokenScope, TokenPlaintext string) (*User, error)
 	}
 
 	return &user, nil
-	
+
 }
