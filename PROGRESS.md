@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 13/21
-- **Current Focus:** User Activation
+- **Chapters Completed:** 14/21
+- **Current Focus:** Authentication
 - **Next Milestone:** Complete User Authentication System
 
 ---
@@ -104,12 +104,12 @@
   - ✅ 13.4 Sending background emails
   - ✅ 13.5 Graceful shutdown of background tasks
 
-- ⬜ **Chapter 14:** User Activation
+- ✅ **Chapter 14:** User Activation
 
-  - ⬜ 14.1 Setting up the tokens database table
-  - ⬜ 14.2 Creating secure activation tokens
-  - ⬜ 14.3 Sending activation tokens
-  - ⬜ 14.4 Activating a user
+  - ✅ 14.1 Setting up the tokens database table
+  - ✅ 14.2 Creating secure activation tokens
+  - ✅ 14.3 Sending activation tokens
+  - ✅ 14.4 Activating a user
 
 - ⬜ **Chapter 15:** Authentication
 
@@ -279,6 +279,10 @@
 - ✅ Fixing duplicate email constraint error string (missing closing quote)
 - ✅ Understanding background goroutines for non-blocking operations
 - ✅ sync.WaitGroup for tracking background task completion during shutdown
+- ✅ PostgreSQL permission denied for tokens table - needed GRANT ALL
+- ✅ Missing closing quote in JSON struct tag causing field unmarshal failure
+- ✅ Understanding crypto/rand for secure token generation
+- ✅ SHA-256 hashing for storing tokens securely in database
 
 **Key Learnings:**
 
@@ -406,6 +410,23 @@
 - ✅ 202 Accepted status code for asynchronous operations
 - ✅ Waiting for background tasks during graceful shutdown
 - ✅ app.wg.Wait() before completing shutdown
+- ✅ crypto/rand package for cryptographically secure random tokens
+- ✅ rand.Text() for generating URL-safe base32 tokens (26 bytes)
+- ✅ SHA-256 hashing tokens before database storage
+- ✅ Storing token hash (not plaintext) in database for security
+- ✅ bytea PRIMARY KEY for token hash in PostgreSQL
+- ✅ Foreign key with ON DELETE CASCADE for automatic cleanup
+- ✅ Token expiry with timestamp comparison (expiry > NOW())
+- ✅ Token scope for different token types (activation, authentication, etc.)
+- ✅ One-time use tokens by deleting after successful use
+- ✅ INNER JOIN to query users by token hash and scope
+- ✅ GetForToken() method combining users and tokens tables
+- ✅ DeleteAllForUser() for invalidating all user tokens of a scope
+- ✅ Token validation (26 bytes long, not empty)
+- ✅ Time-to-live (TTL) for token expiration (3 days for activation)
+- ✅ Updating email templates with activation token instructions
+- ✅ map[string]any for passing multiple template data values
+- ✅ 200 OK status for successful activation vs 202 Accepted for registration
 - ✅ Repository pattern with model structs for database operations
 - ✅ RETURNING clause to get auto-generated IDs, timestamps, and versions
 - ✅ QueryRow() vs Exec() - when to use each for different operations
@@ -449,9 +470,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 14 - User Activation
-**Last completed:** Chapter 13.5 - Graceful shutdown of background tasks
-**Next up:** Chapter 14.1 - Setting up the tokens database table
+**Working on:** Chapter 15 - Authentication
+**Last completed:** Chapter 14.4 - Activating a user
+**Next up:** Chapter 15.1 - Authentication options
 
 ---
 
@@ -474,4 +495,4 @@
 
 ---
 
-_Last updated: October 27, 2025_
+_Last updated: October 28, 2025_
