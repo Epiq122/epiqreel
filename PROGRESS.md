@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 14/21
-- **Current Focus:** Authentication
+- **Chapters Completed:** 15/21
+- **Current Focus:** Permission-based Authorization
 - **Next Milestone:** Complete User Authentication System
 
 ---
@@ -111,11 +111,11 @@
   - ✅ 14.3 Sending activation tokens
   - ✅ 14.4 Activating a user
 
-- ⬜ **Chapter 15:** Authentication
+- ✅ **Chapter 15:** Authentication
 
-  - ⬜ 15.1 Authentication options
-  - ⬜ 15.2 Generating authentication tokens
-  - ⬜ 15.3 Authenticating requests
+  - ✅ 15.1 Authentication options
+  - ✅ 15.2 Generating authentication tokens
+  - ✅ 15.3 Authenticating requests
 
 - ⬜ **Chapter 16:** Permission-based Authorization
 
@@ -283,6 +283,8 @@
 - ✅ Missing closing quote in JSON struct tag causing field unmarshal failure
 - ✅ Understanding crypto/rand for secure token generation
 - ✅ SHA-256 hashing for storing tokens securely in database
+- ✅ strings.Split with empty string "" splits every character
+- ✅ Authorization header parsing requires space delimiter: " "
 
 **Key Learnings:**
 
@@ -451,6 +453,21 @@
 - ✅ defer cancel() pattern for context cleanup
 - ✅ 3-second timeout for database operations
 - ✅ Race condition testing with concurrent requests (xargs -P8)
+- ✅ Stateful authentication with Bearer tokens
+- ✅ Authorization header format: "Bearer <token>"
+- ✅ ScopeAuthentication constant for auth tokens vs activation tokens
+- ✅ 24-hour TTL for authentication tokens (vs 3 days for activation)
+- ✅ context.WithValue() for storing user in request context
+- ✅ context.Value() for retrieving user from request context
+- ✅ Type assertion with ok pattern: user, ok := ctx.Value()
+- ✅ Anonymous user pattern for unauthenticated requests
+- ✅ IsAnonymous() method to check if user is authenticated
+- ✅ Vary: Authorization header for HTTP caching
+- ✅ WWW-Authenticate: Bearer header for 401 responses
+- ✅ authenticate() middleware for extracting and validating tokens
+- ✅ Middleware chaining order: recoverPanic -> rateLimit -> authenticate -> router
+- ✅ 401 Unauthorized for invalid credentials vs invalid tokens
+- ✅ Password verification with bcrypt.CompareHashAndPassword()
 
 **Questions:**
 
@@ -470,9 +487,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 15 - Authentication
-**Last completed:** Chapter 14.4 - Activating a user
-**Next up:** Chapter 15.1 - Authentication options
+**Working on:** Chapter 16 - Permission-based Authorization
+**Last completed:** Chapter 15.3 - Authenticating requests
+**Next up:** Chapter 16.1 - Requiring user activation
 
 ---
 
