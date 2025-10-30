@@ -6,6 +6,7 @@ import (
 	"flag"
 	"log/slog"
 	"os"
+	"strings"
 	"sync"
 	"time"
 
@@ -39,6 +40,10 @@ type config struct {
 		password string
 		sender   string
 	}
+
+	cors struct {
+		trustedOrigins []string
+	}
 }
 
 type application struct {
@@ -71,6 +76,11 @@ func main() {
 	flag.StringVar(&cfg.smtp.username, "smtp-username", "3c690680555e18", "SMTP username")
 	flag.StringVar(&cfg.smtp.password, "smtp-password", "a6576310625445", "SMTP password")
 	flag.StringVar(&cfg.smtp.sender, "smtp-sender", "EpiqReel <no-reply@epiqreel.robertgleason.ca>", "SMTP sender")
+
+	flag.Func("cors-trusted-origins", "Trusted CORS origins (space separated)", func(val string) error {
+		cfg.cors.trustedOrigins = strings.Fields(val)
+		return nil
+	})
 
 	flag.Parse()
 

@@ -6,8 +6,8 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 16/21
-- **Current Focus:** Cross-origin Requests (CORS)
+- **Chapters Completed:** 17/21
+- **Current Focus:** Metrics
 - **Next Milestone:** Production Deployment Preparation
 
 ---
@@ -125,11 +125,11 @@
   - ✅ 16.4 Checking permissions
   - ✅ 16.5 Granting permissions
 
-- ⬜ **Chapter 17:** Cross-origin Requests
-  - ⬜ 17.1 An overview of CORS
-  - ⬜ 17.2 Demonstrating the same-origin policy
-  - ⬜ 17.3 Simple CORS requests
-  - ⬜ 17.4 Preflight CORS requests
+- ✅ **Chapter 17:** Cross-origin Requests
+  - ✅ 17.1 An overview of CORS
+  - ✅ 17.2 Demonstrating the same-origin policy
+  - ✅ 17.3 Simple CORS requests
+  - ✅ 17.4 Preflight CORS requests
 
 ### Part 4: Production & Deployment
 
@@ -290,6 +290,9 @@
 - ✅ Missing return statement in requireActivatedUser middleware
 - ✅ Understanding junction tables for many-to-many relationships
 - ✅ Composite primary key (user_id, permission_id) for users_permissions
+- ✅ Access-Control-Allow-Origin typo - used plural "Origins" instead of singular
+- ✅ Understanding preflight OPTIONS requests and when they trigger
+- ✅ CORS headers must be set before calling next.ServeHTTP()
 
 **Key Learnings:**
 
@@ -404,6 +407,17 @@
 - ✅ Chaining middleware: requireActivatedUser -> requirePermission
 - ✅ Granting movies:read to all users, movies:write to specific users
 - ✅ Testing permission enforcement with different user accounts
+- ✅ CORS (Cross-Origin Resource Sharing) concepts and same-origin policy
+- ✅ Access-Control-Allow-Origin header for simple CORS requests
+- ✅ Vary: Origin header for cache considerations
+- ✅ enableCORS middleware for checking trusted origins
+- ✅ -cors-trusted-origins flag for configuring allowed origins
+- ✅ Preflight requests with OPTIONS method
+- ✅ Access-Control-Allow-Methods header for allowed HTTP methods
+- ✅ Access-Control-Allow-Headers header for allowed request headers
+- ✅ Access-Control-Max-Age for preflight caching (1 hour)
+- ✅ Handling OPTIONS requests in middleware vs router
+- ✅ Testing CORS with simple HTML/JavaScript fetch examples
 - ✅ //go:embed directive for embedding template files in binary
 - ✅ embed.FS for embedded file system access
 - ✅ text/template and html/template for dual-format emails
@@ -500,9 +514,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 17 - Cross-origin Requests (CORS)
-**Last completed:** Chapter 16.5 - Granting permissions
-**Next up:** Chapter 17.1 - An overview of CORS
+**Working on:** Chapter 18 - Metrics
+**Last completed:** Chapter 17.4 - Preflight CORS requests
+**Next up:** Chapter 18.1 - Exposing metrics with expvar
 
 ---
 
