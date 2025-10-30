@@ -6,9 +6,9 @@
 
 ## 📊 Overall Progress
 
-- **Chapters Completed:** 15/21
-- **Current Focus:** Permission-based Authorization
-- **Next Milestone:** Complete User Authentication System
+- **Chapters Completed:** 16/21
+- **Current Focus:** Cross-origin Requests (CORS)
+- **Next Milestone:** Production Deployment Preparation
 
 ---
 
@@ -117,13 +117,13 @@
   - ✅ 15.2 Generating authentication tokens
   - ✅ 15.3 Authenticating requests
 
-- ⬜ **Chapter 16:** Permission-based Authorization
+- ✅ **Chapter 16:** Permission-based Authorization
 
-  - ⬜ 16.1 Requiring user activation
-  - ⬜ 16.2 Setting up the permissions database table
-  - ⬜ 16.3 Setting up the permissions model
-  - ⬜ 16.4 Checking permissions
-  - ⬜ 16.5 Granting permissions
+  - ✅ 16.1 Requiring user activation
+  - ✅ 16.2 Setting up the permissions database table
+  - ✅ 16.3 Setting up the permissions model
+  - ✅ 16.4 Checking permissions
+  - ✅ 16.5 Granting permissions
 
 - ⬜ **Chapter 17:** Cross-origin Requests
   - ⬜ 17.1 An overview of CORS
@@ -285,6 +285,11 @@
 - ✅ SHA-256 hashing for storing tokens securely in database
 - ✅ strings.Split with empty string "" splits every character
 - ✅ Authorization header parsing requires space delimiter: " "
+- ✅ PostgreSQL permission denied for permissions table - needed GRANT ALL
+- ✅ Missing return statement in requirePermission middleware causing double responses
+- ✅ Missing return statement in requireActivatedUser middleware
+- ✅ Understanding junction tables for many-to-many relationships
+- ✅ Composite primary key (user_id, permission_id) for users_permissions
 
 **Key Learnings:**
 
@@ -391,6 +396,14 @@
 - ✅ ErrDuplicateEmail custom error for application-level handling
 - ✅ GetByEmail() method for user lookup by email address
 - ✅ Update() method with version checking for users
+- ✅ Permission-based authorization with permissions table
+- ✅ Many-to-many relationship using junction table (users_permissions)
+- ✅ Permissions.Include() helper for checking permission codes
+- ✅ GetAllForUser() method to fetch user's permissions
+- ✅ requirePermission middleware for protecting endpoints by permission code
+- ✅ Chaining middleware: requireActivatedUser -> requirePermission
+- ✅ Granting movies:read to all users, movies:write to specific users
+- ✅ Testing permission enforcement with different user accounts
 - ✅ //go:embed directive for embedding template files in binary
 - ✅ embed.FS for embedded file system access
 - ✅ text/template and html/template for dual-format emails
@@ -487,9 +500,9 @@
 
 ## 🎯 Current Status
 
-**Working on:** Chapter 16 - Permission-based Authorization
-**Last completed:** Chapter 15.3 - Authenticating requests
-**Next up:** Chapter 16.1 - Requiring user activation
+**Working on:** Chapter 17 - Cross-origin Requests (CORS)
+**Last completed:** Chapter 16.5 - Granting permissions
+**Next up:** Chapter 17.1 - An overview of CORS
 
 ---
 
@@ -506,10 +519,10 @@
 - ✅ **Milestone 1:** Foundation & JSON API (Chapters 1-4)
 - ✅ **Milestone 2:** Database Integration & CRUD (Chapters 5-9)
 - ✅ **Milestone 3:** Advanced Features & Rate Limiting (Chapters 10-11)
-- [ ] **Milestone 4:** User Authentication System (Chapters 12-16)
+- ✅ **Milestone 4:** User Authentication System (Chapters 12-16)
 - [ ] **Milestone 5:** CORS & Metrics (Chapters 17-18)
 - [ ] **Milestone 6:** Production Deployment (Chapters 19-21)
 
 ---
 
-_Last updated: October 28, 2025_
+_Last updated: October 29, 2025_
